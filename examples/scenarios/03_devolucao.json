@@ -1,0 +1,17 @@
+{
+  "id": "03_devolucao",
+  "title": "Arrependimento com prazo vencido",
+  "goal": "Pedido entregue em outubro de 2025, consulta em 2026: a janela de 7 dias do §4.1 já fechou. O agente precisa dizer isso com clareza e oferecer o caminho que ainda existe (defeito §4.2 / garantia §8), sem prometer devolução que a loja não deve.",
+  "turns": [
+    "Oi, me arrependi da compra. É o pedido 1, meu telefone termina em 1098. Consigo devolver?",
+    "Mas eu comprei faz pouco tempo, não tem como abrir uma exceção?"
+  ],
+  "expect": {
+    "tools_required": ["get_order"],
+    "reply_matches": ["(prazo|dias)"]
+  },
+  "turn_expect": [
+    {"index": 1, "reply_matches": ["(fora do prazo|passou do prazo|n[aã]o [eé] mais poss[ií]vel|prazo.{0,20}(venceu|expi|encerr)|j[aá] (venceu|passou|encerr))"], "tools_required": ["get_order"]},
+    {"index": 2, "tools_required": ["escalate_to_human"]}
+  ]
+}

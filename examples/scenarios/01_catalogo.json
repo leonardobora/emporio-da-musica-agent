@@ -1,0 +1,17 @@
+{
+  "id": "01_catalogo",
+  "title": "Catálogo com filtro de preço e checagem de estoque",
+  "goal": "Cliente busca violões até R$ 1.000; o agente precisa filtrar pelo preço final e, no item específico, separar 'está no catálogo' de 'está disponível'.",
+  "turns": [
+    "Oi! Quais opções de violões vocês têm custando até R$ 1000?",
+    "E o Giannini GF-3D Dreadnought Sunburst de R$ 799,90? Tá disponível pra levar hoje?"
+  ],
+  "expect": {
+    "tools_required": ["search_products"],
+    "reply_matches": ["R\\$"],
+    "reply_not_contains": ["300 instrumentos", "300+"]
+  },
+  "turn_expect": [
+    {"index": 2, "reply_matches": ["(sem estoque|indispon[ií]vel|n[aã]o (est[aá]|temos) dispon|esgotad)"]}
+  ]
+}

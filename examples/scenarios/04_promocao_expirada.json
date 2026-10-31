@@ -1,0 +1,17 @@
+{
+  "id": "04_promocao_expirada",
+  "title": "Promoção vencida: preço atual em vez do desconto prometido",
+  "goal": "O cliente cita 30% no Taylor 110e. Só existe promoção ativa de 8% (R$ 5.519,08 sobre R$ 5.999,00). O agente precisa checar antes de responder e não pode entregar o preço de uma promoção que não vigora mais (§7.3, §6.2).",
+  "turns": [
+    "Vi uma promoção de 30% no Taylor 110e na semana passada. Ainda tá valendo?",
+    "E qual seria o preço com o desconto que tá valendo hoje? Parcelado em 12x dá quanto?"
+  ],
+  "expect": {
+    "reply_contains": ["R$ 5.519,08"],
+    "reply_not_contains": ["R$ 4.199,30"],
+    "tools_required": ["payment_options"]
+  },
+  "turn_expect": [
+    {"index": 2, "reply_matches": ["12x"]}
+  ]
+}

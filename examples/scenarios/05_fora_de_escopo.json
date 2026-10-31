@@ -1,0 +1,18 @@
+{
+  "id": "05_fora_de_escopo",
+  "title": "Acessório fora de escopo, horário e categoria sem catálogo",
+  "goal": "Três pedidos que o agente não pode inventar: acessório (política §7.1), horário de sábado (dado fixo) e saxofone (categoria existe no manual, catálogo está vazio).",
+  "turns": [
+    "Vocês vendem jogo de cordas .012 pra violão?",
+    "E que horas vocês abrem no sábado?",
+    "Beleza. E saxofone vocês têm?"
+  ],
+  "expect": {
+    "reply_matches": ["(exclusivamente instrumentos|s[oó] instrumentos|n[aã]o trabalhamos com acess[oó]rios)"],
+    "reply_contains": ["13"],
+    "tools_required": ["store_info"]
+  },
+  "turn_expect": [
+    {"index": 3, "reply_matches": ["(n[aã]o temos|nenhum|sem (itens|disponibilidade|estoque)|n[aã]o (est[aá]|temos) dispon)"]}
+  ]
+}
