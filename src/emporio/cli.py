@@ -115,9 +115,10 @@ def _scenario_paths(paths: list[str]) -> list[Path]:
         elif path.exists():
             result.append(path)
         else:
-            candidate = directory / raw
-            if candidate.exists():
-                result.append(candidate)
+            for candidate in (directory / raw, directory / f"{raw}.json"):
+                if candidate.exists():
+                    result.append(candidate)
+                    break
     return result
 
 

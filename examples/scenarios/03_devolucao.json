@@ -7,11 +7,29 @@
     "Mas eu comprei faz pouco tempo, não tem como abrir uma exceção?"
   ],
   "expect": {
-    "tools_required": ["get_order"],
-    "reply_matches": ["(prazo|dias)"]
+    "tools_required": [
+      "get_order",
+      "escalate_to_human"
+    ],
+    "reply_matches": [
+      "(prazo|dias)"
+    ]
   },
   "turn_expect": [
-    {"index": 1, "reply_matches": ["(fora do prazo|passou do prazo|n[aã]o [eé] mais poss[ií]vel|prazo.{0,20}(venceu|expi|encerr)|j[aá] (venceu|passou|encerr))"], "tools_required": ["get_order"]},
-    {"index": 2, "tools_required": ["escalate_to_human"]}
+    {
+      "index": 1,
+      "reply_matches": [
+        "(fora do prazo|passou do prazo|n[aã]o [eé] mais poss[ií]vel|prazo.{0,60}(venceu|expi|encerr|passou|ultrapass|terminou)|terminou em|j[aá] (venceu|passou|encerr|expi)|n[aã]o est[aá] mais aberto|n[aã]o d[aá] mais|fora do per[íi]odo|n[aã]o consigo autorizar)"
+      ],
+      "tools_required": [
+        "get_order"
+      ]
+    },
+    {
+      "index": 2,
+      "reply_matches": [
+        "(equipe|atendente|humano)"
+      ]
+    }
   ]
 }

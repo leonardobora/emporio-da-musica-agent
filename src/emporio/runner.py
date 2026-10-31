@@ -32,6 +32,7 @@ class ScenarioResult:
     checks: list[ScenarioCheck] = field(default_factory=list)
     transcript_path: Path | None = None
     usage: dict[str, Any] = field(default_factory=dict)
+    answers: list[str] = field(default_factory=list)
 
 
 def load_scenario(path: Path) -> dict[str, Any]:
@@ -189,4 +190,5 @@ def run_scenario(
         checks=checks,
         transcript_path=transcript_path,
         usage=usage,
+        answers=[reply.text for _, reply in turns],
     )

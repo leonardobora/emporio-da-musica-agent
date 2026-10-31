@@ -9,12 +9,41 @@
     "E ainda consigo devolver se eu me arrepender?"
   ],
   "expect": {
-    "tools_required": ["get_order"],
-    "reply_contains": ["BRCX9876543BR"]
+    "tools_required": [
+      "get_order"
+    ],
+    "reply_contains": [
+      "BRCX9876543BR"
+    ]
   },
   "turn_expect": [
-    {"index": 1, "reply_not_contains": ["BRCX9876543BR", "R$ 5.999"], "tools_required": ["get_order"]},
-    {"index": 2, "reply_matches": ["(n[aã]o encontrei|n[aã]o localizei|n[aã]o achei)"], "reply_not_contains": ["BRCX9876543BR"]},
-    {"index": 3, "reply_contains": ["BRCX9876543BR"], "tools_required": ["get_order"]}
+    {
+      "index": 1,
+      "reply_not_contains": [
+        "BRCX9876543BR",
+        "R$ 5.999"
+      ],
+      "reply_matches": [
+        "(4|quatro)\\s*(ú|u)?ltimos\\s*d[íi]gitos"
+      ]
+    },
+    {
+      "index": 2,
+      "reply_matches": [
+        "(n[aã]o encontrei|n[aã]o localizei|n[aã]o achei)"
+      ],
+      "reply_not_contains": [
+        "BRCX9876543BR"
+      ]
+    },
+    {
+      "index": 3,
+      "reply_contains": [
+        "BRCX9876543BR"
+      ],
+      "tools_required": [
+        "get_order"
+      ]
+    }
   ]
 }
