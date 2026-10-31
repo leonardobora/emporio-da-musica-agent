@@ -19,7 +19,8 @@ src/emporio/
 data/            the case data, verbatim
 examples/        5 real conversations (generated, not written by hand) + scenario definitions
 tests/           32 tests, LLM mocked at the transport boundary
-scripts/         eval.py (live model comparison), csv_profile.py (data profiler)
+scripts/         eval.py (live model comparison), csv_profile.py (data profiler),
+                 jev_probe.py (local-decider experiment)
 ```
 
 ## Quickstart
@@ -134,6 +135,17 @@ scenario suite costs about one cent.
 Two honest caveats: the earlier runs of the same table had red checks that were mostly **wrong assertions**
 (fixed, see the QA log), and temperature 0 is not determinism — the same prompt can produce a different
 sentence on the next call, so these are pass *rates*, not proofs.
+
+### Rejected after measuring: a local decision model as pre-router
+
+The obvious way to cut calls — a small local *decision* model (calibrated probabilities, no generation)
+routing messages to templates or to the strong model — was measured against this agent's own logged turns
+and did not beat the majority-class baseline, while adding 0.5–0.7 s per message: "needs live data?" 69%
+versus always-`true` 69%; "needs a human?" 69% versus always-`false` 77% (precision 33%); six-class intent
+1 of 17 correct. A regex layer already finds literal anchors in 77% of the distinct messages in
+microseconds. Full numbers, method and what would change the verdict:
+[`docs/notes/05-jev-router-experiment.md`](docs/notes/05-jev-router-experiment.md) and
+[ADR 0008](docs/adr/0008-no-local-decider-in-the-loop.md); reproduce with `python scripts/jev_probe.py`.
 
 ## Known limitations / what I would do next
 
