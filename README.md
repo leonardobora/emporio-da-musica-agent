@@ -18,7 +18,7 @@ src/emporio/
   cli.py         chat, run-scenario, history, rebuild
 data/            the case data, verbatim
 examples/        5 real conversations (generated, not written by hand) + scenario definitions
-tests/           31 tests, LLM mocked at the transport boundary
+tests/           32 tests, LLM mocked at the transport boundary
 scripts/         eval.py (live model comparison), csv_profile.py (data profiler)
 ```
 
@@ -43,7 +43,7 @@ python -m emporio run-scenario                  # run every scenario, refresh ex
 python -m emporio run-scenario 03_devolucao     # one scenario, by name
 python -m emporio history <session_id>          # replay a persisted conversation
 python -m emporio rebuild                       # reload data/*.csv into SQLite, print counts
-pytest -q                                       # 31 tests, offline, ~1.5s
+pytest -q                                       # 32 tests, offline, ~1.5s
 python scripts/eval.py --models deepseek-chat,deepseek-flash \
     --report docs/notes/03-model-bakeoff.md     # live model comparison, costs cents
 ```
@@ -112,7 +112,7 @@ and token usage of the run that produced it:
 
 ## Evaluation
 
-- **31 offline tests** (`pytest -q`, no network): data rules, promotion activity, availability, instalment
+- **32 offline tests** (`pytest -q`, no network): data rules, promotion activity, availability, instalment
   maths, identity gate, tool dispatch, history replay, max-round fallback.
 - **5 live scenarios** with machine-checked expectations (`expect` / `turn_expect` in each scenario file):
   required tools, forbidden leaks (e.g. the tracking code before verification), exact prices.
