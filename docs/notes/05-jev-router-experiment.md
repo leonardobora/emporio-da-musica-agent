@@ -75,6 +75,22 @@ hallucination — leaving the LLM only for the messages that carry no literal an
    failure of this case.
 3. **Risk scoring for the human queue**, not for the chat loop.
 
+## Nuance found while checking thresholds: it abstains well, it routes badly
+
+At `--threshold 0.9` the picture changes shape rather than improving in the same direction:
+
+| Threshold | needed-data gate | Escalation gate |
+|---|---|---|
+| 0.5 | 69% accuracy (baseline 69%), precision 86%, recall 67% | 69% accuracy, precision 33% |
+| **0.9** | **54% accuracy, precision 100%, recall 33%** (3 true / 0 false positives, abstains on 6) | 85% accuracy, precision 100%, recall 33% |
+
+At 0.9 the decider commits on 7 of the 13 messages and is right every time, abstaining on the other 6 — i.e.
+it is usable as an **abstention gate** ("when it is confident, trust it; otherwise fall through to the LLM"),
+not as a router that must classify everything. With 13 messages, six abstentions and no error budget for
+silent false negatives, this is a hypothesis to re-test on real traffic, not a result to build on. It is
+recorded here because a future reader running the probe will see the same numbers and deserves the
+interpretation instead of just the 0.5 table.
+
 ## What would change the verdict
 
 - Real WhatsApp traffic (hundreds of distinct messages) as a labelled set, which this repo now logs but does
