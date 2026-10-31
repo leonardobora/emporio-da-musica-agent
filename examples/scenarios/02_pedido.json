@@ -30,7 +30,7 @@
     {
       "index": 2,
       "reply_matches": [
-        "(n[aã]o encontrei|n[aã]o localizei|n[aã]o achei)"
+        "(n[aã]o encontrei|n[aã]o localizei|n[aã]o achei|n[aã]o confere)"
       ],
       "reply_not_contains": [
         "BRCX9876543BR"

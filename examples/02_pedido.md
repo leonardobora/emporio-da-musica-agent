@@ -3,16 +3,16 @@
 
 **Objetivo:** Cenário não trivial: o agente recusa revelar dados sem verificação, responde igual para telefone errado e só entrega status/rastreio depois do par pedido + 4 dígitos correto.
 
-**Modelo:** `deepseek-chat` · **Sessão:** `d6e75c949774` · **Executado em:** 2026-10-31T23:08:40Z
-**Tokens:** completion_tokens=525, prompt_cache_hit_tokens=42.624, prompt_cache_miss_tokens=2.456, prompt_tokens=45.080, total_tokens=45.605
+**Modelo:** `deepseek-chat` · **Sessão:** `07d60c57d3d2` · **Executado em:** 2026-10-31T23:23:37Z
+**Tokens:** completion_tokens=465, prompt_cache_hit_tokens=42.368, prompt_cache_miss_tokens=2.612, prompt_tokens=44.980, total_tokens=45.445
 
 ---
 
 **Cliente:** Bom dia! Queria saber onde está o meu pedido 2.
 
-**Agente:** Bom dia! Sou o assistente virtual da Empório da Música, tudo bem? Posso ajudar sim com o seu pedido.  
+**Agente:** Bom dia! Eu sou o assistente virtual da Empório da Música, tudo bem? Posso ajudar com o seu pedido, sim.  
   
-Só preciso confirmar sua identidade: me passa os 4 últimos dígitos do telefone cadastrado no pedido 2, por favor?
+Só preciso confirmar sua identidade: me passa os 4 últimos dígitos do telefone cadastrado no pedido 2?
 
 ---
 
@@ -27,9 +27,7 @@ Só preciso confirmar sua identidade: me passa os 4 últimos dígitos do telefon
 }
 ```
 
-**Agente:** Não encontrei esse pedido com esses dados. Pode conferir o número do pedido e os 4 últimos dígitos do telefone cadastrado?  
-  
-Se preferir, posso te encaminhar para um atendente humano. Quer que eu faça isso?
+**Agente:** Não encontrei esse pedido com esses dados. Se quiser, posso te encaminhar para um atendente humano conferir com você — é só me dizer.
 
 ---
 
@@ -75,7 +73,7 @@ Se preferir, posso te encaminhar para um atendente humano. Quer que eu faça iss
 • Rastreio: BRCX9876543BR  
 • Entrega prevista: 15/11/2025  
   
-Deu tudo certo com o recebimento? Posso ajudar em algo mais?
+Deu tudo certo com a entrega? Posso ajudar em algo mais?
 
 ---
 
@@ -91,11 +89,9 @@ Deu tudo certo com o recebimento? Posso ajudar em algo mais?
 }
 ```
 
-**Agente:** Infelizmente o prazo de arrependimento já passou. Conforme nossa política de devolução (§4.1), são 7 dias corridos após o recebimento — no seu caso, recebido em 15/11/2025, o prazo terminou em 22/11/2025.  
+**Agente:** Pelo que consta aqui, o prazo de arrependimento já passou. Conforme nossa política de devolução (§4.1), são 7 dias corridos após o recebimento — no seu caso, a entrega foi em 15/11/2025 e o prazo encerrou em 22/11/2025.  
   
-A troca por defeito de fabricação (§4.2) também tinha 30 dias, encerrada em 02/12/2025. Ainda assim, a garantia legal de 90 dias (§8.1) continua valendo para defeitos de fabricação.  
-  
-Se você quiser tratar alguma situação específica, posso encaminhar para um atendente humano. Quer?
+A garantia legal de 90 dias contra defeito de fabricação (§8.1) é outra coisa e continua valendo. Se for algum problema com o instrumento, me conta que eu te oriento.
 
 ---
 
@@ -107,6 +103,6 @@ Se você quiser tratar alguma situação específica, posso encaminhar para um a
 - ✅ turno 1 NÃO contém "R$ 5.999"
 - ✅ turno 1 casa /(4|quatro)\s*(ú|u)?ltimos\s*d[íi]gitos/
 - ✅ turno 2 NÃO contém "BRCX9876543BR"
-- ✅ turno 2 casa /(n[aã]o encontrei|n[aã]o localizei|n[aã]o achei)/
+- ✅ turno 2 casa /(n[aã]o encontrei|n[aã]o localizei|n[aã]o achei|n[aã]o confere)/
 - ✅ turno 3 contém "BRCX9876543BR"
 - ✅ turno 3 usou get_order

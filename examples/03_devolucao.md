@@ -3,8 +3,8 @@
 
 **Objetivo:** Pedido entregue em outubro de 2025, consulta em 2026: a janela de 7 dias do §4.1 já fechou. O agente precisa dizer isso com clareza e oferecer o caminho que ainda existe (defeito §4.2 / garantia §8), sem prometer devolução que a loja não deve.
 
-**Modelo:** `deepseek-chat` · **Sessão:** `4bd7b89a5b33` · **Executado em:** 2026-10-31T23:17:53Z
-**Tokens:** completion_tokens=454, prompt_cache_hit_tokens=25.216, prompt_cache_miss_tokens=915, prompt_tokens=26.131, total_tokens=26.585
+**Modelo:** `deepseek-chat` · **Sessão:** `1a1e778e868a` · **Executado em:** 2026-10-31T23:23:44Z
+**Tokens:** completion_tokens=496, prompt_cache_hit_tokens=25.216, prompt_cache_miss_tokens=996, prompt_tokens=26.212, total_tokens=26.708
 
 ---
 
@@ -43,31 +43,35 @@
   … (truncado)
 ```
 
-**Agente:** Oi, Pedro! Encontrei seu pedido aqui: Martin D-28 Dreadnought Natural, entregue em 25/10/2025.  
+**Agente:** Oi, Pedro! Encontrei seu pedido 1 — Martin D-28, entregue em 25/10/2025.  
   
-Sobre o arrependimento: o prazo é de 7 dias corridos a partir do recebimento (§4.1), e ele venceu em 01/11/2025 — então não consigo registrar a devolução por arrependimento agora.  
+Sobre o arrependimento: o prazo é de 7 dias corridos a partir do recebimento (§4.1), e ele venceu em 01/11/2025. Então não consigo registrar a devolução por arrependimento agora.  
   
-O que ainda pode valer: a garantia legal de 90 dias contra defeito de fabricação (§8.1), se for o caso. Se for isso, ou se você quer avaliar alguma exceção, posso te encaminhar para um atendente humano. Quer que eu faça isso?
+O que ainda pode valer:  
+• Troca por defeito de fabricação: prazo de 30 dias da compra, também encerrado (§4.2)  
+• Garantia legal de 90 dias contra defeito de fabricação, contada do recebimento (§8.1) — essa ainda está no prazo  
+  
+Se for algum problema com o instrumento, me conta o que está acontecendo que eu encaminho para nossa equipe avaliar. Quer que eu faça isso?
 
 ---
 
 **Cliente:** Mas eu comprei faz pouco tempo, não tem como abrir uma exceção?
 
-`escalate_to_human({"reason": "Cliente pede exceção ao prazo de arrependimento (§4.1) já vencido", "summary": "Pedro (pedido #1, Martin D-28, entregue em 25/10/2025) quer devolver por arrependimento, mas o prazo de 7 dias venceu em 01/11/2025. Solicita análise de exceção pela gerência."})`
+`escalate_to_human({"reason": "Cliente pede exceção ao prazo de arrependimento (§4.1) já vencido no pedido 1", "summary": "Pedro (pedido 1, Martin D-28, entregue em 25/10/2025) quer devolver por arrependimento, mas o prazo de 7 dias venceu em 01/11/2025. Pede análise de exceção pela gerência."})`
 
 ```json
 {
   "registered": true,
-  "handoff_id": 9,
+  "handoff_id": 14,
   "contact": "(67) 3341-4444",
   "sla": "retorno em até 24 horas úteis para reclamações registradas (§7.3)",
   "note": "avise o cliente que um atendente humano vai retomar a conversa pelo WhatsApp do cadastro"
 }
 ```
 
-**Agente:** Entendo, Pedro. Abrir exceção foge da minha alçada, mas já registrei seu caso para a equipe avaliar.  
+**Agente:** Entendo, Pedro. Exceção ao prazo é uma decisão que só a gerência pode tomar, então registrei seu caso para um atendente humano avaliar.  
   
-Um atendente humano vai retomar a conversa por aqui, pelo WhatsApp do seu cadastro, com retorno em até 24 horas úteis (§7.3). Se preferir adiantar, o contato é (67) 3341-4444.  
+Ele vai retomar a conversa por aqui, no WhatsApp do seu cadastro, em até 24 horas úteis (§7.3). Se preferir adiantar, o contato é (67) 3341-4444.  
   
 Posso ajudar em algo mais enquanto isso?
 

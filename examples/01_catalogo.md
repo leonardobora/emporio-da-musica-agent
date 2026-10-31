@@ -3,8 +3,8 @@
 
 **Objetivo:** Cliente busca violões até R$ 1.000; o agente precisa filtrar pelo preço final e, no item específico, separar 'está no catálogo' de 'está disponível'.
 
-**Modelo:** `deepseek-chat` · **Sessão:** `28804a598846` · **Executado em:** 2026-10-31T23:07:50Z
-**Tokens:** completion_tokens=389, prompt_cache_hit_tokens=28.160, prompt_cache_miss_tokens=2.900, prompt_tokens=31.060, total_tokens=31.449
+**Modelo:** `deepseek-chat` · **Sessão:** `bb1e16d46a13` · **Executado em:** 2026-10-31T23:23:28Z
+**Tokens:** completion_tokens=457, prompt_cache_hit_tokens=38.912, prompt_cache_miss_tokens=1.033, prompt_tokens=39.945, total_tokens=40.402
 
 ---
 
@@ -40,15 +40,17 @@
   … (truncado)
 ```
 
-**Agente:** Oi! Eu sou o assistente virtual da Empório da Música. Temos boas opções de violão até R$ 1.000, todas em estoque:  
+**Agente:** Oi! Eu sou o assistente virtual da Empório da Música 😊 Temos boas opções de violão até R$ 1.000, todas em estoque:  
   
-• Tagima Memphis AC-39 Nylon — R$ 429,90  
+• Tagima Memphis AC-39 Nylon Natural — R$ 429,90  
 • Rozini RC-104 Nylon Estudante — R$ 459,90  
 • Shelby SN-100 Folk Aço Preto — R$ 549,00  
-• Yamaha C40 Nylon — R$ 599,90  
-• Yamaha F310 Aço — R$ 699,90  
+• Giannini GF-1R Aço Folk Sunburst — R$ 579,90  
+• Yamaha C40 Nylon Natural — R$ 599,90  
   
-Tem mais modelos nessa faixa (Giannini e Tagima Dallas). Você prefere nylon ou aço? Assim eu te indico o melhor pra você.
+Também tem Giannini GN-15 (R$ 689,00), Yamaha F310 (R$ 699,90) e Tagima Dallas Tuner (R$ 749,00).  
+  
+Você prefere corda de nylon (clássico) ou de aço (folk)? Posso te ajudar a escolher.
 
 ---
 
@@ -85,14 +87,26 @@ Tem mais modelos nessa faixa (Giannini e Tagima Dallas). Você prefere nylon ou 
   … (truncado)
 ```
 
-**Agente:** O Giannini GF-3D Dreadnought Sunburst está R$ 799,90, mas no momento está temporariamente sem estoque — não dá pra levar hoje.  
+`check_availability({"product_id": 96})`
+
+```json
+{
+  "found": true,
+  "product_id": 96,
+  "name": "Giannini GF-3D Dreadnought Sunburst",
+  "status": "active",
+  "stock_quantity": 0,
+  "state": "out_of_stock",
+  "sellable": false,
+  "message": "temporariamente sem estoque"
+}
+```
+
+**Agente:** O Giannini GF-3D Dreadnought Sunburst está saindo por R$ 799,90, mas no momento está temporariamente sem estoque — não dá pra levar hoje, infelizmente.  
   
-Se quiser algo parecido de dreadnought/folk com cordas de aço e disponível agora:  
-• Yamaha F310 Aço — R$ 699,90  
-• Tagima Dallas Tuner Aço — R$ 749,00  
-• Giannini GF-1R Aço Folk Sunburst — R$ 579,90  
+Como alternativa parecida com dreadnought de aço, temos o Yamaha F310 Aço Natural (R$ 699,90) e o Tagima Dallas Tuner Aço Natural (R$ 749,00), ambos disponíveis.  
   
-Quer que eu detalhe algum desses?
+Quer que eu detalhe algum deles?
 
 ---
 

@@ -116,8 +116,24 @@ and token usage of the run that produced it:
   maths, identity gate, tool dispatch, history replay, max-round fallback.
 - **5 live scenarios** with machine-checked expectations (`expect` / `turn_expect` in each scenario file):
   required tools, forbidden leaks (e.g. the tracking code before verification), exact prices.
-- **Model bake-off**: same scenarios, same prompts, three models —
+- **Model bake-off**: same scenarios, same prompts, three models, temperature 0 —
   [`docs/notes/03-model-bakeoff.md`](docs/notes/03-model-bakeoff.md).
+
+Latest bake-off (2026-10-31, one snapshot — see `docs/notes/04-qa-log.md` for why a snapshot and not a score):
+
+| Model | Scenarios passed | Est. cost for the 5 | Notes |
+|---|---|---|---|
+| `deepseek-chat` | 5/5 | US$ 0.007 | default: shortest answers (≈400 completion tokens/scenario), lowest cost |
+| `deepseek-flash` | 5/5 | US$ 0.010 | correct but chattier (≈890 tokens/scenario) |
+| `deepseek-v4-pro` | 5/5 | US$ 0.009 | correct; occasionally over-explains the scope rule |
+
+All three pass, so the default stays `deepseek-chat`: same correctness, a third of the verbosity. The cost
+column is computed from the provider's token counts (`scripts/eval.py`), not estimated by hand — a full
+scenario suite costs about one cent.
+
+Two honest caveats: the earlier runs of the same table had red checks that were mostly **wrong assertions**
+(fixed, see the QA log), and temperature 0 is not determinism — the same prompt can produce a different
+sentence on the next call, so these are pass *rates*, not proofs.
 
 ## Known limitations / what I would do next
 

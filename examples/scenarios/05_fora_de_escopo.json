@@ -22,7 +22,7 @@
     {
       "index": 3,
       "reply_matches": [
-        "(n[aã]o temos|nenhum|sem (itens|disponibilidade|estoque)|n[aã]o (est[aá]|temos) dispon)"
+        "(n[aã]o temos|n[aã]o tem\\b|nenhum|sem (itens|disponibilidade|estoque)|n[aã]o (est[aá]|temos) dispon|indispon[ií]vel)"
       ]
     }
   ]

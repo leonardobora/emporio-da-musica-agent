@@ -3,8 +3,8 @@
 
 **Objetivo:** O cliente cita 30% no Taylor 110e. Só existe promoção ativa de 8% (R$ 5.519,08 sobre R$ 5.999,00). O agente precisa checar antes de responder e não pode entregar o preço de uma promoção que não vigora mais (§7.3, §6.2).
 
-**Modelo:** `deepseek-chat` · **Sessão:** `9d89d82d511e` · **Executado em:** 2026-10-31T23:08:14Z
-**Tokens:** completion_tokens=341, prompt_cache_hit_tokens=25.344, prompt_cache_miss_tokens=1.506, prompt_tokens=26.850, total_tokens=27.191
+**Modelo:** `deepseek-chat` · **Sessão:** `a7ee9d4ec763` · **Executado em:** 2026-10-31T23:23:50Z
+**Tokens:** completion_tokens=339, prompt_cache_hit_tokens=25.856, prompt_cache_miss_tokens=982, prompt_tokens=26.838, total_tokens=27.177
 
 ---
 
@@ -69,10 +69,9 @@
   … (truncado)
 ```
 
-**Agente:** Oi! Aqui é o assistente virtual da Empório da Música. Sobre o Taylor 110e: a promoção de 30% não está mais ativa, ela já terminou.  
+**Agente:** Oi! Aqui é o assistente virtual da Empório da Música. Sobre o Taylor 110e: a promoção de 30% não está mais ativa, ela já encerrou.  
   
-O que está valendo hoje é o Desconto Exclusivo de 8%:  
-• Taylor 110e Dreadnought Natural  
+O que temos hoje é o Taylor 110e Dreadnought Natural com 8% de desconto:  
 • De R$ 5.999,00 por R$ 5.519,08  
 • 4 unidades em estoque  
   
@@ -115,13 +114,13 @@ Quer que eu veja as condições de pagamento ou algum outro violão nessa faixa?
   … (truncado)
 ```
 
-**Agente:** O preço com o desconto de hoje fica em R$ 5.519,08 (de R$ 5.999,00, 8% off).  
+**Agente:** O preço com o desconto ativo hoje fica R$ 5.519,08 (de R$ 5.999,00, 8% off).  
   
 Em 12x sem juros no cartão: 12 parcelas de R$ 459,92.  
   
-Detalhe: no PIX o valor é o mesmo R$ 5.519,08, porque os 5% do PIX não se acumulam com preço promocional (§6.2). Também aceitamos débito e boleto à vista.  
+Detalhe: no PIX não há desconto extra, porque os 5% não se acumulam com preço promocional (§6.2). À vista no débito ou boleto também sai R$ 5.519,08.  
   
-Posso ajudar em algo mais?
+Quer que eu separe uma unidade ou ajudo em algo mais?
 
 ---
 
