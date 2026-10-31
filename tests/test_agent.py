@@ -180,6 +180,17 @@ def test_payment_options_tool_uses_product_price(conn):
     assert result["credit"]["max_installments"] == 12
 
 
+def test_config_allows_keyless_local_commands(monkeypatch):
+    from emporio.config import Config
+
+    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
+    monkeypatch.setattr("emporio.config.load_dotenv", lambda path=None: None)
+    cfg = Config.from_env(require_key=False)
+    assert cfg.api_key == ""
+    with pytest.raises(RuntimeError):
+        Config.from_env()
+
+
 def test_runner_checks_turn_level_expectations():
     scenario = {
         "id": "x",

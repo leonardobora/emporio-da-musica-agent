@@ -36,10 +36,11 @@ class Config:
     data_dir: Path
 
     @classmethod
-    def from_env(cls) -> "Config":
+    def from_env(cls, require_key: bool = True) -> "Config":
+        """`require_key=False` for commands that only touch the local database (rebuild, history)."""
         load_dotenv()
         key = os.environ.get("DEEPSEEK_API_KEY", "").strip()
-        if not key:
+        if not key and require_key:
             raise RuntimeError(
                 "DEEPSEEK_API_KEY is not set. Copy .env.example to .env and fill it in, or export it."
             )

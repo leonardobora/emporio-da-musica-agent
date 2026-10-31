@@ -123,7 +123,7 @@ def _scenario_paths(paths: list[str]) -> list[Path]:
 
 
 def cmd_history(args: argparse.Namespace) -> int:
-    cfg = Config.from_env()
+    cfg = Config.from_env(require_key=False)
     conn = database.connect(cfg.db_path)
     rows = database.history(conn, args.session)
     if not rows:
@@ -136,7 +136,7 @@ def cmd_history(args: argparse.Namespace) -> int:
 
 
 def cmd_rebuild(args: argparse.Namespace) -> int:
-    cfg = Config.from_env()
+    cfg = Config.from_env(require_key=False)
     conn = database.connect(cfg.db_path)
     database.load_store(conn, cfg.data_dir)
     counts = {
