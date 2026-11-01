@@ -11,7 +11,11 @@ import httpx
 
 
 class LLMError(RuntimeError):
-    pass
+    """Provider failure. `retryable` distinguishes a transient 5xx/429 from a fatal 4xx."""
+
+    def __init__(self, message: str, retryable: bool = True):
+        super().__init__(message)
+        self.retryable = retryable
 
 
 @dataclass
@@ -69,7 +73,10 @@ class DeepSeekClient:
                 if response.status_code in (429, 500, 502, 503, 504):
                     raise LLMError(f"HTTP {response.status_code}: {response.text[:200]}")
                 if response.status_code >= 400:
-                    raise LLMError(f"HTTP {response.status_code}: {response.text[:400]}")
+                    # 4xx means the request itself is wrong (bad schema, bad key): retrying cannot help.
+                    raise LLMError(
+                        f"HTTP {response.status_code}: {response.text[:400]}", retryable=False
+                    )
                 data = response.json()
                 message = data["choices"][0]["message"]
                 return LLMResponse(
@@ -78,7 +85,12 @@ class DeepSeekClient:
                     usage=data.get("usage", {}),
                     model=data.get("model", self.model),
                 )
-            except (httpx.HTTPError, LLMError, KeyError, json.JSONDecodeError) as exc:
+            except LLMError as exc:
+                last_error = exc
+                if not exc.retryable or attempt == self.max_retries - 1:
+                    break
+                time.sleep(1.5 * (attempt + 1))
+            except (httpx.HTTPError, KeyError, json.JSONDecodeError) as exc:
                 last_error = exc
                 if attempt == self.max_retries - 1:
                     break
