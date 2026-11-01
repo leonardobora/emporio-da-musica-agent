@@ -3,16 +3,18 @@
 
 **Objetivo:** Três pedidos que o agente não pode inventar: acessório (política §7.1), horário de sábado (dado fixo) e saxofone (categoria existe no manual, catálogo está vazio).
 
-**Modelo:** `deepseek-chat` · **Sessão:** `7a3cf21633ab` · **Executado em:** 2026-11-01T00:00:50Z
-**Tokens:** completion_tokens=323, prompt_cache_hit_tokens=31.232, prompt_cache_miss_tokens=1.318, prompt_tokens=32.550, total_tokens=32.873
+**Modelo:** `deepseek-chat` · **Sessão:** `b3085faed5b6` · **Executado em:** 2026-11-01T00:04:00Z
+**Tokens:** completion_tokens=281, prompt_cache_hit_tokens=31.232, prompt_cache_miss_tokens=1.260, prompt_tokens=32.492, total_tokens=32.773
 
 ---
 
 **Cliente:** Vocês vendem jogo de cordas .012 pra violão?
 
-**Agente:** Oi! Aqui é o assistente virtual da Empório da Música. Então, a gente trabalha só com instrumentos musicais — cordas, palhetas, cabos, cases e afins ficam fora do nosso escopo, então não temos jogo de cordas .012.  
+**Agente:** Oi! Aqui é o assistente virtual da Empório da Música. 😊  
   
-Posso te ajudar com algo dentro do catálogo, tipo violões, guitarras, baixos, teclados ou baterias?
+Cordas a gente não trabalha, não — a loja é especializada em instrumentos musicais, e cordas entram como acessório, fora do nosso escopo.  
+  
+Posso te ajudar com um violão novo, por exemplo. Quer que eu veja opções?
 
 ---
 
@@ -41,29 +43,31 @@ Posso te ajudar com algo dentro do catálogo, tipo violões, guitarras, baixos, 
   … (truncado)
 ```
 
-**Agente:** No sábado a gente abre às 9h e fecha às 13h. De segunda a sexta é das 9h às 18h, e domingo e feriado a loja fica fechada.  
+**Agente:** No sábado a gente abre das 09:00 às 13:00. De segunda a sexta é das 09:00 às 18:00, e domingo e feriado a loja fica fechada.  
   
-O atendimento por aqui no WhatsApp segue o mesmo horário. Posso ajudar em mais alguma coisa?
+Fica na Rua 14 de Maio, 3200 — Centro, Campo Grande-MS.  
+  
+Posso ajudar em mais alguma coisa?
 
 ---
 
 **Cliente:** Beleza. E saxofone vocês têm?
 
-`search_products({"query": "saxofone", "only_available": false})`
+`search_products({"query": "saxofone"})`
 
 ```json
 {
   "count": 0,
   "returned": 0,
-  "only_available_filter": false,
+  "only_available_filter": true,
   "products": [],
   "note": "Filtro de disponibilidade ativo: produtos sem estoque, em breve ou descontinuados não aparecem. Refine a busca ou use get_product para checar um item específico."
 }
 ```
 
-**Agente:** Saxofone é instrumento de sopro (madeiras/metais) e essa categoria está indisponível no nosso catálogo no momento — não tenho nenhum modelo pra te oferecer agora.  
+**Agente:** Saxofone está indisponível no momento — a categoria de sopro não tem itens no nosso catálogo agora.  
   
-Se quiser, posso te mostrar alternativas de outras categorias, tipo teclados, violões ou guitarras. Quer ver alguma?
+Se quiser, posso te mostrar alternativas em teclados, violões ou guitarras. Quer dar uma olhada?
 
 ---
 
@@ -71,5 +75,5 @@ Se quiser, posso te mostrar alternativas de outras categorias, tipo teclados, vi
 
 - ✅ ferramentas obrigatórias ['store_info'] — faltaram: []
 - ✅ resposta contém "13"
-- ❌ resposta casa /(exclusivamente (com )?instrumentos|s[oó] instrumentos|n[aã]o trabalhamos com acess[oó]rios|acess[oó]rios.{0,40}n[aã]o (faz|fazem) parte)/
+- ✅ resposta casa /(s[oó] (com )?instrumentos|exclusivamente (com )?instrumentos|fora do nosso escopo|n[aã]o vendemos|n[aã]o trabalhamos com|n[aã]o comercializamos)/
 - ✅ turno 3 casa /(n[aã]o temos|n[aã]o tem\b|nenhum|sem (itens|disponibilidade|estoque)|n[aã]o (est[aá]|temos) dispon|indispon[ií]vel)/

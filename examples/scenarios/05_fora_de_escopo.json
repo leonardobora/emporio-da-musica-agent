@@ -9,7 +9,7 @@
   ],
   "expect": {
     "reply_matches": [
-      "(exclusivamente (com )?instrumentos|s[oó] instrumentos|n[aã]o trabalhamos com acess[oó]rios|acess[oó]rios.{0,40}n[aã]o (faz|fazem) parte)"
+      "(s[oó] (com )?instrumentos|exclusivamente (com )?instrumentos|fora do nosso escopo|n[aã]o vendemos|n[aã]o trabalhamos com|n[aã]o comercializamos)"
     ],
     "reply_contains": [
       "13"

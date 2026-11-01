@@ -70,6 +70,22 @@ confirma é a equipe", cites the windows as estimates counted from dispatch, and
 customer accepts. That is the whole value of the scenario suite: it caught a hallucination that no unit test
 would have found, and the fix landed in data and prompt rather than in the assertion.
 
+## A committed transcript with a red check (caught in the final review)
+
+After the examples were regenerated for the last time, `examples/05_fora_de_escopo.md` shipped with one
+failing check: the agent said "a loja é especializada em instrumentos musicais… cordas entram como acessório,
+fora do nosso escopo", and the assertion only accepted `só instrumentos` / `exclusivamente instrumentos` /
+`não trabalhamos com acessórios`. Correct behaviour, fourth variant of the same brittleness (the optional
+"com", again).
+
+Two changes, both in the check rather than the prose: the pattern now accepts `só (com )instrumentos`,
+`fora do nosso escopo`, `não vendemos` and `não comercializamos`; and the transcript was regenerated so the
+file committed is a run where every check is green. The English translation was re-done against that new run
+(session id and timestamp included), because a translation of an older run would be a quiet lie.
+
+The rule this keeps re-teaching: **an assertion over generated prose should match the meaning, not the
+sentence you happened to read first.**
+
 ## Observations kept from the first runs, because they are the kind of thing a checklist will not catch
 
 - The agent spontaneously offered the human handoff *before* the customer asked for an exception (turn 1 of
