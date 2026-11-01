@@ -19,3 +19,8 @@ venv/
 *.db
 .chroma/
 .cache/
+
+# Test artifacts
+.coverage
+coverage.xml
+htmlcov/

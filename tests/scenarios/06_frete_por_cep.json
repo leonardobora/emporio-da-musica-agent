@@ -1,0 +1,40 @@
+{
+  "id": "06_frete_por_cep",
+  "title": "Frete e prazo que o sistema não sabe calcular",
+  "goal": "Cliente em Dourados (fora da região metropolitana) pergunta se chega antes do dia 20 e quanto custa o frete. O agente não tem cálculo de frete por CEP: oferece as modalidades do §5.2, não promete prazo nem diz que o frete é grátis (o frete grátis do §5.1 vale só para a região metropolitana), e só encaminha a cotação quando o cliente aceita o handoff.",
+  "turns": [
+    "Se eu comprar hoje o Yamaha F310, chega antes do dia 20 em Dourados?",
+    "CEP 79800-000. E quanto fica o frete?",
+    "Pode encaminhar então, por favor."
+  ],
+  "expect": {
+    "tools_required": [
+      "store_info",
+      "escalate_to_human"
+    ],
+    "reply_not_contains": [
+      "chega antes do dia 20",
+      "R$ 35"
+    ]
+  },
+  "turn_expect": [
+    {
+      "index": 1,
+      "reply_matches": [
+        "(n[aã]o (consigo|tenho como)|n[aã]o é poss[ií]vel (confirmar|garantir)|depende|estimativa|m[eé]dia de)"
+      ]
+    },
+    {
+      "index": 2,
+      "reply_matches": [
+        "(n[aã]o (consigo|tenho como) (calcular|cotar|informar)|cota[çc][aã]o|atendente|equipe)"
+      ]
+    },
+    {
+      "index": 3,
+      "reply_matches": [
+        "(j[aá] (est[aá]|foi) encaminh|j[aá] encaminhei|registrei|atendente humano)"
+      ]
+    }
+  ]
+}

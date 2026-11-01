@@ -90,8 +90,9 @@ def cmd_run(args: argparse.Namespace) -> int:
         print("nenhum cenário encontrado")
         return 1
     failed = 0
+    out_dir = Path(args.out) if args.out else REPO_ROOT / "examples"
     for path in scenarios:
-        result = runner.run_scenario(path, client, conn, REPO_ROOT / "examples", write_transcript=True)
+        result = runner.run_scenario(path, client, conn, out_dir, write_transcript=True)
         status = "PASSOU" if result.passed else "FALHOU"
         print(f"{status} {result.scenario_id} — {result.title}")
         for check in result.checks:
@@ -99,7 +100,8 @@ def cmd_run(args: argparse.Namespace) -> int:
                 print(f"    ✗ {check.name} {check.detail}")
                 failed += 1
         if result.transcript_path:
-            print(f"    → {result.transcript_path.relative_to(REPO_ROOT)}")
+            shown = result.transcript_path
+            print(f"    → {shown.relative_to(REPO_ROOT) if shown.is_relative_to(REPO_ROOT) else shown}")
     return 1 if failed else 0
 
 
@@ -159,6 +161,7 @@ def main(argv: list[str] | None = None) -> int:
 
     run = sub.add_parser("run-scenario", help="executa cenários e grava transcrições em examples/")
     run.add_argument("paths", nargs="*", help="arquivos .json, diretório, ou nome do cenário")
+    run.add_argument("--out", help="diretório das transcrições (default: examples/)")
     run.set_defaults(func=cmd_run)
 
     hist = sub.add_parser("history", help="mostra as mensagens de uma sessão")
