@@ -3,16 +3,16 @@
 
 **Objetivo:** Cenário não trivial: o agente recusa revelar dados sem verificação, responde igual para telefone errado e só entrega status/rastreio depois do par pedido + 4 dígitos correto.
 
-**Modelo:** `deepseek-chat` · **Sessão:** `07d60c57d3d2` · **Executado em:** 2026-10-31T23:23:37Z
-**Tokens:** completion_tokens=465, prompt_cache_hit_tokens=42.368, prompt_cache_miss_tokens=2.612, prompt_tokens=44.980, total_tokens=45.445
+**Modelo:** `deepseek-chat` · **Sessão:** `f704614e3662` · **Executado em:** 2026-11-01T00:00:28Z
+**Tokens:** completion_tokens=460, prompt_cache_hit_tokens=43.520, prompt_cache_miss_tokens=2.439, prompt_tokens=45.959, total_tokens=46.419
 
 ---
 
 **Cliente:** Bom dia! Queria saber onde está o meu pedido 2.
 
-**Agente:** Bom dia! Eu sou o assistente virtual da Empório da Música, tudo bem? Posso ajudar com o seu pedido, sim.  
+**Agente:** Bom dia! Aqui é o assistente virtual da Empório da Música, tudo bem? Posso ajudar sim com o seu pedido.  
   
-Só preciso confirmar sua identidade: me passa os 4 últimos dígitos do telefone cadastrado no pedido 2?
+Só preciso confirmar sua identidade: me passa os 4 últimos dígitos do telefone cadastrado no pedido 2, por favor?
 
 ---
 
@@ -27,7 +27,9 @@ Só preciso confirmar sua identidade: me passa os 4 últimos dígitos do telefon
 }
 ```
 
-**Agente:** Não encontrei esse pedido com esses dados. Se quiser, posso te encaminhar para um atendente humano conferir com você — é só me dizer.
+**Agente:** Não encontrei esse pedido com esses dados. Pode conferir o número do pedido e os 4 últimos dígitos do telefone cadastrado?  
+  
+Se preferir, posso encaminhar você para um atendente humano. Quer que eu faça isso?
 
 ---
 
@@ -68,12 +70,12 @@ Só preciso confirmar sua identidade: me passa os 4 últimos dígitos do telefon
 
 **Agente:** Achei, Thiago! Seu pedido 2 está com status entregue.  
   
-• Produto: Taylor 110e Dreadnought Natural  
+• Item: Taylor 110e Dreadnought Natural  
 • Total: R$ 5.999,00 (crédito em 6x)  
 • Rastreio: BRCX9876543BR  
 • Entrega prevista: 15/11/2025  
   
-Deu tudo certo com a entrega? Posso ajudar em algo mais?
+Posso ajudar em algo mais?
 
 ---
 
@@ -89,9 +91,9 @@ Deu tudo certo com a entrega? Posso ajudar em algo mais?
 }
 ```
 
-**Agente:** Pelo que consta aqui, o prazo de arrependimento já passou. Conforme nossa política de devolução (§4.1), são 7 dias corridos após o recebimento — no seu caso, a entrega foi em 15/11/2025 e o prazo encerrou em 22/11/2025.  
+**Agente:** Infelizmente não, Thiago. O prazo de arrependimento é de 7 dias corridos após o recebimento (§4.1), e no seu caso ele venceu em 22/11/2025 — já está encerrado.  
   
-A garantia legal de 90 dias contra defeito de fabricação (§8.1) é outra coisa e continua valendo. Se for algum problema com o instrumento, me conta que eu te oriento.
+Se o violão apresentar algum defeito de fabricação, a garantia legal de 90 dias (§8.1) continua valendo. Quer que eu verifique algo nesse sentido?
 
 ---
 

@@ -19,6 +19,14 @@ came from the data.
 | `04_promocao_expirada.md` | a 30% promotion that no longer exists | **non-trivial**: verifies promotion state, quotes the current 8%, computes 12x via the tool |
 | `05_fora_de_escopo.md` | strings, Saturday hours, saxophone | scope §7.1, static store data, and a category the manual lists but the catalogue does not stock |
 
+English translations of all five are in [`translations/`](translations/). The PT-BR files are the record of
+the run; the translations exist only so a reviewer who does not read Portuguese can follow the dialogue.
+
+A **sixth** conversation — the shipping quote the system cannot compute — is kept in
+[`../tests/scenarios/06_frete_por_cep.md`](../tests/scenarios/) rather than here: the brief asks for 3–5
+examples, and that one is a regression guard (it caught the agent inventing today's date and promising a
+delivery date).
+
 How to read a transcript:
 
 ```

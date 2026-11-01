@@ -43,6 +43,33 @@ That rerun also exposed two more over-strict checks, both fixed:
 - `03_devolucao` expected `prazo … venceu`; one answer said "o prazo é de 7 dias … e **o seu terminou** em
   01/11/2025", which is the same claim with the subject elided.
 
+## A real defect the scenarios found later: the agent invented today's date
+
+Added after the first delivery pass, as a sixth scenario kept in `tests/scenarios/` (the brief asks for
+3–5 example conversations, so the regression scenario does not sit in `examples/`).
+
+Prompt: *"Se eu comprar hoje o Yamaha F310, chega antes do dia 20 em Dourados?"* — the reply in the first run:
+
+> "Como hoje é dia 10, o SEDEX chega com folga antes do dia 20."
+
+Two violations in one sentence, and both are the case's core failure mode:
+
+1. **It invented the current date** (the run happened on 2026-10-31).
+2. **It converted a policy window into a delivery promise** — §7.1 forbids quoting deadlines without the
+   system, and §5.2 only publishes estimated windows counted from dispatch.
+
+The fix went to the two places that own the fact, not to the scenario:
+
+- `store_info()` now serves the clock (`today_iso`, `today_human`); a model that can look up today does not
+  invent it.
+- prompt rule 12: never state today's date without `store_info`, never turn §5.2's windows into a promised
+  date, and hand freight quotes to a human because this system has no CEP calculator.
+
+After the fix the same scenario reads "não consigo calcular frete nem data por aqui, e a data exata quem
+confirma é a equipe", cites the windows as estimates counted from dispatch, and escalates only when the
+customer accepts. That is the whole value of the scenario suite: it caught a hallucination that no unit test
+would have found, and the fix landed in data and prompt rather than in the assertion.
+
 ## Observations kept from the first runs, because they are the kind of thing a checklist will not catch
 
 - The agent spontaneously offered the human handoff *before* the customer asked for an exception (turn 1 of

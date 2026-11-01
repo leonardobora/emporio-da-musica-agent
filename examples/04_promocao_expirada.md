@@ -3,8 +3,8 @@
 
 **Objetivo:** O cliente cita 30% no Taylor 110e. Só existe promoção ativa de 8% (R$ 5.519,08 sobre R$ 5.999,00). O agente precisa checar antes de responder e não pode entregar o preço de uma promoção que não vigora mais (§7.3, §6.2).
 
-**Modelo:** `deepseek-chat` · **Sessão:** `a7ee9d4ec763` · **Executado em:** 2026-10-31T23:23:50Z
-**Tokens:** completion_tokens=339, prompt_cache_hit_tokens=25.856, prompt_cache_miss_tokens=982, prompt_tokens=26.838, total_tokens=27.177
+**Modelo:** `deepseek-chat` · **Sessão:** `eb43b60cd7dc` · **Executado em:** 2026-11-01T00:00:43Z
+**Tokens:** completion_tokens=352, prompt_cache_hit_tokens=25.856, prompt_cache_miss_tokens=1.526, prompt_tokens=27.382, total_tokens=27.734
 
 ---
 
@@ -69,13 +69,12 @@
   … (truncado)
 ```
 
-**Agente:** Oi! Aqui é o assistente virtual da Empório da Música. Sobre o Taylor 110e: a promoção de 30% não está mais ativa, ela já encerrou.  
+**Agente:** Essa promoção de 30% já terminou. O que está ativo hoje no Taylor 110e Dreadnought Natural é um desconto de 8%:  
   
-O que temos hoje é o Taylor 110e Dreadnought Natural com 8% de desconto:  
 • De R$ 5.999,00 por R$ 5.519,08  
 • 4 unidades em estoque  
   
-Quer que eu veja as condições de pagamento ou algum outro violão nessa faixa?
+Lembrando que o desconto de 5% no PIX não se acumula com preço promocional (§6.2). Quer que eu veja as condições de parcelamento?
 
 ---
 
@@ -114,11 +113,11 @@ Quer que eu veja as condições de pagamento ou algum outro violão nessa faixa?
   … (truncado)
 ```
 
-**Agente:** O preço com o desconto ativo hoje fica R$ 5.519,08 (de R$ 5.999,00, 8% off).  
+**Agente:** O preço com o desconto ativo hoje é R$ 5.519,08 (8% sobre R$ 5.999,00).  
   
-Em 12x sem juros no cartão: 12 parcelas de R$ 459,92.  
+No cartão de crédito fica em 12x sem juros de R$ 459,92.  
   
-Detalhe: no PIX não há desconto extra, porque os 5% não se acumulam com preço promocional (§6.2). À vista no débito ou boleto também sai R$ 5.519,08.  
+No PIX o valor é o mesmo R$ 5.519,08, porque o desconto de 5% não se acumula com preço promocional (§6.2). Boleto e débito também saem por R$ 5.519,08 à vista.  
   
 Quer que eu separe uma unidade ou ajudo em algo mais?
 

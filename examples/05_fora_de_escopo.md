@@ -3,16 +3,16 @@
 
 **Objetivo:** Três pedidos que o agente não pode inventar: acessório (política §7.1), horário de sábado (dado fixo) e saxofone (categoria existe no manual, catálogo está vazio).
 
-**Modelo:** `deepseek-chat` · **Sessão:** `97f09daafd56` · **Executado em:** 2026-10-31T23:23:58Z
-**Tokens:** completion_tokens=350, prompt_cache_hit_tokens=30.720, prompt_cache_miss_tokens=1.250, prompt_tokens=31.970, total_tokens=32.320
+**Modelo:** `deepseek-chat` · **Sessão:** `7a3cf21633ab` · **Executado em:** 2026-11-01T00:00:50Z
+**Tokens:** completion_tokens=323, prompt_cache_hit_tokens=31.232, prompt_cache_miss_tokens=1.318, prompt_tokens=32.550, total_tokens=32.873
 
 ---
 
 **Cliente:** Vocês vendem jogo de cordas .012 pra violão?
 
-**Agente:** Oi! Eu sou o assistente virtual da Empório da Música. Sobre a sua pergunta: a gente trabalha exclusivamente com instrumentos musicais — cordas, palhetas, cabos, cases e afins ficam fora do nosso escopo (§1).  
+**Agente:** Oi! Aqui é o assistente virtual da Empório da Música. Então, a gente trabalha só com instrumentos musicais — cordas, palhetas, cabos, cases e afins ficam fora do nosso escopo, então não temos jogo de cordas .012.  
   
-Posso te ajudar com algo dentro disso? Por exemplo, violões, guitarras, teclados, baterias ou ukuleles. Quer que eu te mostre algumas opções?
+Posso te ajudar com algo dentro do catálogo, tipo violões, guitarras, baixos, teclados ou baterias?
 
 ---
 
@@ -22,6 +22,8 @@ Posso te ajudar com algo dentro disso? Por exemplo, violões, guitarras, teclado
 
 ```json
 {
+  "today_iso": "2026-10-31",
+  "today_human": "31/10/2026",
   "name": "Empório da Música",
   "tagline": "Sua música começa aqui.",
   "address": "Rua 14 de Maio, 3200 — Centro, Campo Grande-MS, 79202-333",
@@ -35,45 +37,31 @@ Posso te ajudar com algo dentro disso? Por exemplo, violões, guitarras, teclado
     "sunday_and_holidays": "fechado",
     "note": "atendimento por WhatsApp segue o mesmo horário, com respostas automáticas fora do expediente"
   },
-  "scope": "a loja trabalha exclusivamente com instrumentos musicais; não comercializa acessórios (cordas, palhetas, cabos, cases, pedais, amplificadores)",
-  "delivery": {
-    "
+  "scope": "a loja trabalha exclusivamente com instrumentos musicais; não comercializa acessórios (cordas, palhetas, c
   … (truncado)
 ```
 
-**Agente:** No sábado a gente abre às 9h e fica até as 13h. De segunda a sexta é das 9h às 18h, e domingo e feriado a loja fica fechada (§2).  
+**Agente:** No sábado a gente abre às 9h e fecha às 13h. De segunda a sexta é das 9h às 18h, e domingo e feriado a loja fica fechada.  
   
-Fica na Rua 14 de Maio, 3200 — Centro, Campo Grande-MS. Posso ajudar em mais alguma coisa?
+O atendimento por aqui no WhatsApp segue o mesmo horário. Posso ajudar em mais alguma coisa?
 
 ---
 
 **Cliente:** Beleza. E saxofone vocês têm?
 
-`search_products({"query": "saxofone"})`
+`search_products({"query": "saxofone", "only_available": false})`
 
 ```json
 {
   "count": 0,
   "returned": 0,
-  "only_available_filter": true,
+  "only_available_filter": false,
   "products": [],
   "note": "Filtro de disponibilidade ativo: produtos sem estoque, em breve ou descontinuados não aparecem. Refine a busca ou use get_product para checar um item específico."
 }
 ```
 
-`search_products({"category": "sopro"})`
-
-```json
-{
-  "count": 0,
-  "returned": 0,
-  "only_available_filter": true,
-  "products": [],
-  "note": "Filtro de disponibilidade ativo: produtos sem estoque, em breve ou descontinuados não aparecem. Refine a busca ou use get_product para checar um item específico."
-}
-```
-
-**Agente:** Saxofone é instrumento de sopro (madeiras), e essa categoria está indisponível no nosso catálogo no momento — não tenho nenhum modelo pra te oferecer hoje.  
+**Agente:** Saxofone é instrumento de sopro (madeiras/metais) e essa categoria está indisponível no nosso catálogo no momento — não tenho nenhum modelo pra te oferecer agora.  
   
 Se quiser, posso te mostrar alternativas de outras categorias, tipo teclados, violões ou guitarras. Quer ver alguma?
 
@@ -83,5 +71,5 @@ Se quiser, posso te mostrar alternativas de outras categorias, tipo teclados, vi
 
 - ✅ ferramentas obrigatórias ['store_info'] — faltaram: []
 - ✅ resposta contém "13"
-- ✅ resposta casa /(exclusivamente (com )?instrumentos|s[oó] instrumentos|n[aã]o trabalhamos com acess[oó]rios|acess[oó]rios.{0,40}n[aã]o (faz|fazem) parte)/
+- ❌ resposta casa /(exclusivamente (com )?instrumentos|s[oó] instrumentos|n[aã]o trabalhamos com acess[oó]rios|acess[oó]rios.{0,40}n[aã]o (faz|fazem) parte)/
 - ✅ turno 3 casa /(n[aã]o temos|n[aã]o tem\b|nenhum|sem (itens|disponibilidade|estoque)|n[aã]o (est[aá]|temos) dispon|indispon[ií]vel)/
