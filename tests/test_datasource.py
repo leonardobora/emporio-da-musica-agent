@@ -149,6 +149,15 @@ def test_historical_order_with_coming_soon_product_still_answers(conn):
     assert item["quantity"] == 2
 
 
+def test_store_info_serves_todays_date():
+    from datetime import date as _date
+
+    info = datasource.store_info(today=_date(2026, 10, 31))
+    assert info["today_iso"] == "2026-10-31"
+    assert info["today_human"] == "31/10/2026"
+    assert "3341-4444" in info["phone_whatsapp"]
+
+
 def test_policy_sections_are_extractable():
     assert "parcela mínima de R$ 80,00" in policies.get_policy("3.1")["text"]
     assert "não se aplica sobre" in policies.get_policy("6.2")["text"]

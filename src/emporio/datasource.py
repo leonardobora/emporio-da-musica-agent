@@ -416,9 +416,16 @@ def get_order(conn: sqlite3.Connection, order_id: int | str, phone_last4: str, t
     }
 
 
-def store_info() -> dict:
-    """Static store information from the manual (§1.2, §2, §7)."""
+def store_info(today: date | None = None) -> dict:
+    """Static store information from the manual (§1.2, §2, §7) plus today's date.
+
+    The clock is served here on purpose: a model that does not know today's date will invent one and then
+    promise a delivery date (§7.1 forbids quoting deadlines without the system).
+    """
+    today = today or _today()
     return {
+        "today_iso": today.isoformat(),
+        "today_human": today.strftime("%d/%m/%Y"),
         "name": "Empório da Música",
         "tagline": "Sua música começa aqui.",
         "address": "Rua 14 de Maio, 3200 — Centro, Campo Grande-MS, 79202-333",
